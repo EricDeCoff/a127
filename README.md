@@ -201,7 +201,28 @@ To print a list of valid options for a command:
 * **start** - Starts a local instance of the Apache Usergrid service.
 * **stop** - Stops the running Usergrid service.
 
-    Note: If you are unsure if Usergrid is running, hit localhost:8080. If you get a "Page Not Found" error, Usergrid is not running. In that case, try stopping and then starting Usergrid using `a127 usergrid stop` and `a127 usergrid start`.
+>            
+             NOTE:
+             If you are unsure if Usergrid is running, hit http://localhost:8080.
+             If you get a "Page Not Found" error, Usergrid is not running.
+             In that case, try stopping and then starting Usergrid using:
+```             
+                 a127 usergrid stop
+                 a127 usergrid start
+```                 
+>            
+                 WINDOW NOTE:
+                 In case usergrid fails to start properly use netstat to find what using 8080
+```
+                     netstat -ano | find "8080"
+                     Proto  Local Address          Foreign Address        State           PID
+                     TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING       3228
+                     TCP    [::]:8080              [::]:0                 LISTENING       3228
+```
+                 Taskkill can stop task via pid
+```
+                taskkill /F /PID 3228
+```
 
 * **download** - Downloads Apache Usergrid to your machine. 
 * **portal** - Opens the Usergrid portal. Use the portal to manage Usergrid projects, create data sets, manage app security, and more. The default login credentials are test/test. 
